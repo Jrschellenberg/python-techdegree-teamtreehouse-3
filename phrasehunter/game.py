@@ -1,13 +1,23 @@
 import sys
 import re
 from phrasehunter.phrase import Phrase
+from random import randint
 
 
 class Game:
-    def __init__(self, lives=5):
+    def __init__(self, phrases=[], lives=5):
         self._player_guesses = []
         self._lives = lives
-        self.phrase = Phrase()
+        self.phrases = phrases
+        self._phrase = None
+
+    @property
+    def phrase(self):
+        return self._phrase
+
+    @phrase.setter
+    def phrase(self, value):
+        self._phrase = Phrase(value)
 
     def _get_player_guesses(self):
         string = ""
@@ -50,3 +60,9 @@ class Game:
             print(f"You won! while maintaining {self._lives} lives! Congrats!")
         else:
             print("Sorry, you lost :(")
+
+    def initialize_game(self, lives=5):
+        phrase = self.phrases.pop(randint(0, len(self.phrases) - 1))
+        self.phrase = phrase
+        self._lives = lives
+        self._player_guesses = []
