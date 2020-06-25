@@ -1,3 +1,4 @@
+import sys
 import re
 from phrasehunter.phrase import Phrase
 
@@ -8,13 +9,22 @@ class Game:
         self._lives = 5
         self.phrase = Phrase()
 
+    def _get_player_guesses(self):
+        string = ""
+        for guess in self._player_guesses:
+            string += f', {guess}'
+        return string.replace(', ', '', 1)
+
     def _is_still_alive(self):
         return 0 < self._lives
 
     def _guess_character(self):
         while True:
             try:
-                player_guess = input("Please guess a letter:  ")
+                print(f"You have Guessed the following letters [ {self._get_player_guesses()} ]")
+                player_guess = input("Please guess a letter, or 1 to quit:  ")
+                if player_guess == '1':
+                    sys.exit(0)
                 if not len(player_guess) == 1:
                     raise ValueError("Please enter 1 character only!")
                 if re.match(r'[A-z]', player_guess) is None:

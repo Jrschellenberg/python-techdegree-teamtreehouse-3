@@ -1,3 +1,4 @@
+import os
 from random import randint
 from phrasehunter.character import Character
 
@@ -19,10 +20,12 @@ RANDOM_PHRASES = [
 
 class Phrase(list):
     def __init__(self):
+        super().__init__()
         phrase = RANDOM_PHRASES[randint(0, len(RANDOM_PHRASES)-1)]
         for char in phrase:
             self.append(Character(char))
-        print(phrase)
+        if os.environ.get('DEBUG', False):
+            print(phrase)
 
     def __str__(self):
         string = ""
@@ -42,4 +45,3 @@ class Phrase(list):
             if char.validate_guess(guessed_char):
                 keep_live = True
         return keep_live
-
