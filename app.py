@@ -1,7 +1,6 @@
-# Import your Game class
+import sys
 from phrasehunter.game import Game
 
-# Create your Dunder Main statement.
 
 # Inside Dunder Main:
 # Create an instance of your Game class
@@ -9,13 +8,13 @@ from phrasehunter.game import Game
 
 
 def init():
-    game = Game()
-    print(game.get_phrase())
-    for _ in range(5):
-        print(game.is_game_won())
+    try:
+        game = Game()
+        game.start_game()
+    except ValueError as err:
+        print(err)
+        sys.exit(1)
 
 
 if __name__ == '__main__':
-    # Kick off the program by calling the start_game function.
     init()
-

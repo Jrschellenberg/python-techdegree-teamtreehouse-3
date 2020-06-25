@@ -29,3 +29,17 @@ class Phrase(list):
         for char in self:
             string += char.character
         return string
+
+    def is_phrase_guessed(self):
+        for char in self:
+            if not char.guessed:
+                return False
+        return True
+
+    def player_guess(self, guessed_char):
+        keep_live = False
+        for char in self:
+            if char.validate_guess(guessed_char):
+                keep_live = True
+        return keep_live
+
