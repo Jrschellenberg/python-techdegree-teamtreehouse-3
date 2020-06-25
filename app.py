@@ -10,6 +10,7 @@ from phrasehunter.game import Game
 
 def init():
     game = Game()
+    print(game.get_phrase())
     for _ in range(5):
         print(game.is_game_won())
 
