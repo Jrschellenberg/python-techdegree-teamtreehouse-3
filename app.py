@@ -8,12 +8,17 @@ from phrasehunter.game import Game
 
 
 def init():
-    try:
-        game = Game()
-        game.start_game()
-    except ValueError as err:
-        print(err)
-        sys.exit(1)
+    while True:
+        try:
+            game = Game()
+            game.start_game()
+            play_again = input("Would you like to play Again, Press Enter to play again, or (Q/q) to quit")
+            if play_again.lower() == 'q':
+                break
+            print("Thanks for Playing! Please come again soon!")
+        except ValueError as err:
+            print(err)
+            sys.exit(1)
 
 
 if __name__ == '__main__':
