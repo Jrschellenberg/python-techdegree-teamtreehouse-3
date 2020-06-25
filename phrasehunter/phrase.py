@@ -19,9 +19,8 @@ RANDOM_PHRASES = [
 
 
 class Phrase(list):
-    def __init__(self):
+    def __init__(self, phrase=RANDOM_PHRASES[randint(0, len(RANDOM_PHRASES)-1)]):
         super().__init__()
-        phrase = RANDOM_PHRASES[randint(0, len(RANDOM_PHRASES)-1)]
         for char in phrase:
             self.append(Character(char))
         if os.environ.get('DEBUG', False):

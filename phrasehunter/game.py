@@ -4,9 +4,9 @@ from phrasehunter.phrase import Phrase
 
 
 class Game:
-    def __init__(self):
+    def __init__(self, lives=5):
         self._player_guesses = []
-        self._lives = 5
+        self._lives = lives
         self.phrase = Phrase()
 
     def _get_player_guesses(self):
