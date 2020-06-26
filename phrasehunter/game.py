@@ -8,7 +8,7 @@ class Game:
     def __init__(self, phrases=[], lives=5):
         self._player_guesses = []
         self._lives = lives
-        self.phrases = phrases
+        self.phrases = [Phrase(phrase) for phrase in phrases]
         self._phrase = None
 
     @property
@@ -17,7 +17,7 @@ class Game:
 
     @phrase.setter
     def phrase(self, value):
-        self._phrase = Phrase(value)
+        self._phrase = value
 
     def _get_player_guesses(self):
         string = ""

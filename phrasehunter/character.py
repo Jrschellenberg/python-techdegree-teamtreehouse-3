@@ -18,14 +18,6 @@ class Character:
     def guessed(self):
         return self._guessed
 
-    @guessed.setter
-    def guessed(self, value):
-        self._guessed = value
-
-    @character.setter
-    def character(self, value):
-        self._character = value
-
     def validate_guess(self, guessed_char):
         if re.match(self._character, guessed_char, re.IGNORECASE) is not None:
             self._guessed = True

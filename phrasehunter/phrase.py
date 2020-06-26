@@ -5,12 +5,14 @@ from phrasehunter.character import Character
 class Phrase(list):
     def __init__(self, phrase):
         super().__init__()
+        if os.environ.get('DEBUG', False):
+            self._phrase = phrase
         for char in phrase:
             self.append(Character(char))
-        if os.environ.get('DEBUG', False):
-            print(f"DEUBGMODE: Phrase = {phrase}")
 
     def __str__(self):
+        if os.environ.get('DEBUG', False):
+            print(f"DEUBGMODE: Phrase = {self._phrase}")
         string = ""
         for char in self:
             string += char.character
